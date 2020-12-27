@@ -1,0 +1,8 @@
+#!/bin/sh
+
+for file in "$@"
+do
+  pathinwsl=`realpath $file`
+  pathinwindows=`wslpath -w $pathinwsl`
+  SumatraPDF.exe "$pathinwindows" &
+done
