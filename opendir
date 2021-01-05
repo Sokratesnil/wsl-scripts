@@ -1,0 +1,13 @@
+#!/bin/sh
+
+for dir in "${@:-./}"
+do
+	if [ -d "$dir" ]
+	then
+		pathinwsl=`realpath $dir`
+		pathinwindows=`wslpath -w $pathinwsl`
+		explorer.exe "$pathinwindows" &
+	else
+		echo "$dir is not a directory."
+	fi
+done
